@@ -1,0 +1,24 @@
+//INIT
+loadi (65,7);
+loadi (66,8);
+//INT10
+loadi (22,35);
+loadi (23,36);
+//EXCEP
+loadi (2,15);
+loadi (3,16);
+//PAGE TABLE
+PTBR = PAGE_TABLE_BASE;
+PTLR = 3;
+//2 CODE ENTRIES 1 STACK
+[PTBR+0] = 65;
+[PTBR+1] = "0100";
+[PTBR+2] = 66;
+[PTBR+3] = "0100";
+[PTBR+4] = 76;
+[PTBR+5] = "0110";
+//STACK
+[76*512] = 0;
+SP = 2*512;
+
+ireturn;
